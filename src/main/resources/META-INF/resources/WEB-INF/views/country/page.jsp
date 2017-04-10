@@ -20,15 +20,31 @@
 <c:set var="countrys" 	value="${page.countrys}"/>
 <c:set var="paging" 	value="${page.paging}"/>
 <h1>Country Page List pageNo = ${paging.pageNo}</h1>
+	<table class="table table-striped table-bordered table-hover">
+		<tr style='background-color: skyblue'>
+		<th>No</th>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Pop</th>
+		<th>정보수정</th>
+		<th>정보삭제</th>
+	</tr>
 
-<c:forEach var="c" items="${countrys}" varStatus="status">
-	<b>${status.index}</b> ${c.code} <a href="/country/item/${c.code}">${c.name}</a> ${c.population} <br>
-</c:forEach>
-
+	<c:forEach var="c" items="${countrys}" varStatus="status">
+		<tr>
+			<td><b>${status.index}</b> </td>
+			<td>${c.code} </td>
+			<td><a href="/country/item/${c.code}">${c.name}</a> </td>
+			<td>${c.population} <br></td>
+			<td><a class="btn btn-success" href="/country/modify/${country.id}?pageNo=${page.paging.pageNo}">수정</a></td>
+			<td><a class="btn btn-info"    href="/country/unregister/${country.id}?pageNo=${page.paging.pageNo}">삭제</a></td>
+		</tr>
+	</c:forEach>
+</table>
 <hr>
-<button onclick="displayBox(event)" class="btn btn-danger animated bounce">
+<%-- <button onclick="displayBox(event)" class="btn btn-danger animated bounce">
 ${paging}
-</button>
+</button> --%>
 <hr>
 <a href="/country/page/${paging.firstPage - 1}">Prev</a>
 <c:forEach var="i" begin="${paging.firstPage}" end="${paging.lastPage}">

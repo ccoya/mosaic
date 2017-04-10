@@ -1,7 +1,4 @@
-package com.example.city.service;
-
-import java.util.List;
-import java.util.Map;
+package com.example.form;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,70 +9,62 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
-import com.example.domain.City;
-import com.example.form.CityForm;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CityModifyServiceTests {
-	
-	@Autowired
-	CitySearchService citySearchService;
-	
-	@Autowired
-	CityModifyService cityModifyService;
+public class CityFormTests {
 	
 	@Autowired
 	Validator validator;
 	
 	@Test
-	public void test00_confirmCitySearchService() {
-		System.out.println("citySearchService=" + citySearchService);
-		
-	}
-	@Test
-	public void test00_confirmCityModifyService() {
-		System.out.println("cityModifyService=" + cityModifyService);
-		
-	}
-	@Test
 	public void test00_confirmValidator() {
 		System.out.println("validator=" + validator);
-		
 	}
+	
 	@Test
-	public void test01_modify() {
+	public void test01_getName() {
 		CityForm cityForm = new CityForm();
+//		cityForm.setName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		
 		BindingResult errors = new BeanPropertyBindingResult(cityForm, "cityForm");
-
-		cityForm.setId(4079);
-		cityForm.setName("xxx");
-		cityForm.setCountryCode("USA");
 		
 		validator.validate(cityForm, errors);
-		if (errors.hasErrors()) {
-			System.out.println("errors=" + errors);
-			return;
-		}
-	
-		cityModifyService.modify(cityForm, errors);
 		
 		if (errors.hasErrors()) {
 			System.out.println("errors=" + errors);
 			return;
 		}
-		
-		System.out.println("city=" + citySearchService.getCityById(cityForm.getId()));
+		System.out.println("cityForm는 유효합니다");
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Test
+	public void test02_getCountryCode() {
+		CityForm cityForm = new CityForm();
+		cityForm.setName("java");
+		cityForm.setCountryCode("KOREA");
+		cityForm.setDistrict("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		
+		BindingResult errors = new BeanPropertyBindingResult(cityForm, "cityForm");
+		
+		validator.validate(cityForm, errors);
+		
+		if (errors.hasErrors()) {
+			System.out.println("errors=" + errors);
+			return;
+		}
+		
+		System.out.println("cityForm는 유효합니다");
+		
+	}
 
 }
+
+
+
+
+
+
+
+
+
+

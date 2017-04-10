@@ -7,15 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index.jsp</title>
-<!-- 1. animate -->
-<link rel="stylesheet" href="/webjars/animate.css/3.5.2/animate.min.css">
-<!-- 2. bootstrap -->
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
-<!-- 3. jquery -->
-<script type="text/javascript" src="/webjars/jquery/1.11.1/jquery.min.js"></script>
-<!-- 4. bootstrap.js -->
-<script type="text/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<title>modifySuccess.jsp</title>
 
 <!-- Code Assist -->
 <c:if test="false">
@@ -25,8 +17,15 @@
 
 </head>
 <body>
-<c:redirect url="/city/page/1"/>
-<%-- <c:redirect url="http://www.google.com"/> --%>
+<h1>City 수정 성공입니다.</h1>
+${city}
+
+<hr>
+
+<a class="btn btn-primary" href="/city/page/${param.pageNo}">이전 Page로...</a>
 
 </body>
 </html>
+
+
+
